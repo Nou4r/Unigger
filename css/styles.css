@@ -1,0 +1,536 @@
+:root {
+    --bg-color:             hsl(240, 15%, 12%);
+    --bg-color-input:       hsl(240, 15%, 10%);
+    --fg-color:             hsl(0, 0%, 100%); 
+    --p-color:              hsl(212, 55%, 50%);
+
+    --font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.light-mode {
+    --bg-color:             hsl(0, 0%, 100%);
+    --bg-color-input:       hsl(0, 0%, 90%);
+    --fg-color:             hsl(0, 0%, 0%); 
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    --background-color:         var(--bg-color);
+    --background-color-input:   var(--bg-color-input);
+    --foreground-color:         var(--fg-color);
+    --primary-color:            var(--p-color);
+
+    display: flex;
+    flex-direction: column;
+    color: var(--foreground-color);
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    /* transition: all ease-in-out 200ms; */
+}
+
+header {
+    text-align: center;
+    margin: auto;
+}
+
+main {
+    flex-grow: 1;
+    min-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+footer {
+    margin: auto auto 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a i {
+    color: #fff;
+    margin-right: 0.25rem;
+}
+
+footer p {
+    white-space: nowrap;
+}
+
+footer p > *:not(:first-child) {
+    margin-left: 0.5em;
+}
+
+h1 {
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+h3 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Noscript tag */
+main > span:first-child + * {
+    margin-top: 1rem;
+}
+
+a,
+a:any-link {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+hr {
+    max-width: 20rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+div.header:last-child {
+    margin-bottom: 1rem;
+}
+
+nav.links * {
+   margin-left: 0.35rem;
+   margin-right: 0.35rem;
+}
+
+div.light-toggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+div.light-toggle > i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -45%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color-input);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--foreground-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider::before {
+    -webkit-transform:  translateX(26px);
+    -ms-transform:      translateX(26px);
+    transform:          translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+} 
+
+@media screen and (max-width: 645px) {
+    div.light-toggle {
+        top: 28px    
+    }
+
+
+    .switch {
+        width: 43px;
+        height: 30px;
+        margin-left: 2px
+    }
+
+    
+    .slider::before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: var(--foreground-color);
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider::before {
+        -webkit-transform:  translateX(14px);
+        -ms-transform:      translateX(14px);
+        transform:          translateX(14px);
+    }
+}
+
+textarea.input {
+    --default-line: 5;
+
+    width: 90%;
+    max-width: 45rem;
+    height: 60rem;
+    resize: both;
+    overflow: scroll;
+    overflow-x: auto;
+    font-size: 1.25rem;
+    border-width: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    color: var(--foreground-color);
+    font-family: var(--font-family);
+    border-color: hsl(0, 0%, 50%);
+    height: calc(var(--default-line) * 1.35em);
+    background-color: var(--background-color-input);
+    white-space: pre; /* Added property to preserve whitespace, but not wrap */
+}
+
+/* @media only screen and (max-width: 880px) {
+    textarea.input {
+        max-width: 90%;
+    }
+} */
+
+textarea.input::placeholder {
+    color: var(--foreground-color);
+    opacity: 30%;
+}
+
+button {
+    height: 3rem;
+    width: 7rem;
+    border: 0;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 1.05rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+a.button {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 0;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 1.05rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+a#inspect {
+    margin-top: 1rem
+}
+
+div.main-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 90%;
+    overflow: hidden;
+    align-items: center;
+}
+
+div.main-output {
+    display: none;
+}
+
+div.main-output.is-active{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 3rem;
+    max-width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+}
+
+div.main-output.is-active h3 {
+    margin: 0 0 1rem 0
+}
+
+table {
+    min-width: 30%;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+}
+
+table,
+table thead,
+table td,
+table th {
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 10px;
+    color: var(--foreground-color);
+    border-color: var(--foreground-color);
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+/* 2nd child because 1st is <noscript> */
+main > div:has(table):not(:nth-child(2)) {
+    margin-top: 2rem;
+}
+
+.letter-table-title {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+
+a.button,
+a.button:any-link {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border: 0;
+    max-height: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-family);
+}
+
+button.button-copy {
+    width: 4rem;
+    height:2rem;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+input[type="text"].input-copy {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: 0;
+    width: fit-content;
+    height: 1.25rem;
+    max-width: 22.5rem;
+    color: var(--foreground-color);
+    background-color: var(--background-color-input);
+    font-family: var(--font-family);
+}
+ 
+
+div.input-copy {
+    display: flex;
+    margin: 1rem 0;
+    max-width: 100%;
+}
+
+div.toast {
+    --toast-width: 175px;
+
+    visibility: hidden;
+    min-width: var(--toast-width);
+    /* margin-left: -125px; */
+    margin-left: calc(var(--toast-width) / 2 * -1);
+    background-color: var(--background-color-input);
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+    border-radius: 10rem;
+    padding: 16px;
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    bottom: 30px;
+}
+
+div.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+@keyframes fadein {
+    0% {
+        bottom: 0;
+        opacity: 0;
+    }
+    100% {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    0% {
+        bottom: 30px; 
+        opacity: 1;
+    }
+    100% {
+        bottom: 0; 
+        opacity: 0;
+    }
+}
+
+.notification {
+    --height: 3rem;
+    display: inline-flex;
+    height: var(--height);
+    width: max-content;
+    max-width: 16rem;
+    padding: 0 0.75rem;
+    background-color: #f82a2a;
+    text-align: center;
+    vertical-align: middle;
+    line-height: var(--height);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.notification p {
+    display: inline-block;
+}
+
+.notification .icon-container {
+    display: inline-flex;
+  align-items: center;
+}
+
+.notification p {
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.converter-setting-container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.converter-setting-container div {
+    display: flex;
+    vertical-align: middle;
+    margin: 0 0.35em;
+}
+
+
+@media screen and (max-width: 635px) {
+    .converter-setting-container {
+        flex-direction: column;
+    }
+
+    .converter-setting-container div {
+        margin-top:     0.15em;
+        margin-bottom:  0.15em;
+    }
+}
+
+.converter-setting-container input[type="checkbox"]  {
+    position: relative;
+    padding-left: 1.25em;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    color: #fff;
+    line-height: 25px;
+    /* background-color: #d5d5d5;
+    accent-color: #f82a2a;
+    cursor: pointer; */
+}
+
+.converter-setting-container input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    width:  1em;
+    outline: 2px solid var(--p-color);
+    background-color: var(--bg-color-input);
+}
+
+.converter-setting-container input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    width:  1em;
+    outline: 2px solid var(--p-color);
+    background-color: #fff;
+}
+
+.converter-setting-container input[type="checkbox"]:checked::after {
+    position: absolute;
+    content: "";
+    left: 2.5px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border-color: var(--p-color);
+    border-style: solid;
+    border-width: 0 3px 3px 0;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.converter-setting-container label {
+  user-select: none;
+  cursor: pointer;
+}
